@@ -12,12 +12,7 @@ public class Main {
 		match1.addPlayer(p1);
 		match1.addPlayer(p2);
 		
-		System.err.println(match1);
-		
-		p1.sayAWord("Tree");
-		p2.sayAWord("Tree");
-		
-		System.out.println(match1);
+		match1.play();
 	}
 
 }

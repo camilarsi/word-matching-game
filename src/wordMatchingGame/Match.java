@@ -9,7 +9,9 @@ public class Match {
 	private ArrayList<String> words;
 	private int round;
 	private int maxRounds;
-	private String state = "the game has started"; 
+	private String state = "The game has started"; 
+	private String stateEnded = "The game has become to end. Nodoby wins :(";
+	private String stateWon = "The game has ended! The winner word is "; 
 	
 	public Match(int cantJugadores, int maxRondas) {
 		this.players = new ArrayList();
@@ -26,40 +28,56 @@ public class Match {
 		}
 	}
 
-
-	public void saveWord(String word) {
-		if (this.round < this.maxRounds){
-			if(this.words.size() < this.playersAmount) {
-				this.words.add(word);
-				if(this.words.size() == this.playersAmount) {
-					this.checkMatching();
-				}
+	public void play() {
+		this.round = 1;
+		this.setState(state, "");
+		this.playRound();
+		
+	} 
+	
+	public void playRound() {
+		if (this.round <= this.maxRounds) {
+			for(Player p: this.players) {
+				System.out.println("Player " + p.getId() + " say a word: ");
+				p.sayAWord();
 			}
+			if (!this.checkMatching()) {
+				this.words.clear();
+				this.playRound();
+			}
+		} else {
+			this.setState(stateEnded, "");
 		}
 		
 	}
 
+	public void saveWord(String word) {
+		if(this.words.size() < this.playersAmount) {
+			this.words.add(word);
+		}
+	}
+
 
 	public boolean checkMatching() {
-		this.round ++;
 		boolean result = false;
 		for(int i = 0; i< this.words.size(); i ++) {
 			String w1 = this.words.get(i);
 			for(int j = i + 1; j < this.words.size(); j ++) {
 				String w2 = this.words.get(j);
 				if(w1.equals(w2)) {
-					this.setState(w1);
-					result = true; 
+					this.setState(stateWon, w1);
+					result = true;
 				}
 			}
 		}
-		
+		this.round ++;
 		return result;
 	}
 
 
-	private void setState(String word) {
-		this.state = "The winner word is '" + word + "'. The game has ended.";
+	private void setState(String state, String winnerWord) {
+		this.state = state + winnerWord;
+		System.out.println(this.state);
 	}
 
 

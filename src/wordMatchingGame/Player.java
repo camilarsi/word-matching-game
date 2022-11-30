@@ -10,7 +10,8 @@ public class Player {
 		this.id = id;
 	}
 	
-	public void sayAWord(String word) {
+	public void sayAWord() {
+		String word = Input.askInput();
 		if(this.word == null ||!this.word.equals(word)) {
 			this.word = word;
 		}
@@ -37,7 +38,7 @@ public class Player {
 		return false;
 	}
 
-	private Object getId() {
+	public Object getId() {
 		return id;
 	}
 

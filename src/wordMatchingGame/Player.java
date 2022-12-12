@@ -11,12 +11,12 @@ public class Player {
 	}
 	
 	public void sayAWord() {
-		System.out.println("Player " + this.id + " say a word: ");
-		String word = Input.askInput();
-		if(this.word == null ||!this.word.equals(word)) {
-			this.word = word;
+		System.out.println("Player " + this.id + " say a word: \n");
+		String input = Input.askInput();
+		if(this.word == null ||!this.word.equals(input)) {
+			this.word = input;
 		}
-		this.match.addWord(word);
+		this.match.addWord(input);
 	}
 	
 	public void setMatch(Match match) {

@@ -65,7 +65,6 @@ public class Match {
 				p.sayAWord();
 			}
 		}
-		
 	}
 	
 	
@@ -73,6 +72,7 @@ public class Match {
 		if (this.round <= this.maxRounds) {
 			this.askWordToPlayers();
 			if (!this.checkMatching()) {
+				System.out.println(this.showRoundWords());
 				this.words.clear();
 				this.round ++;
 				this.playRound();
@@ -100,5 +100,14 @@ public class Match {
 		return result;
 	}
 	
-	
+	public String showRoundWords(){
+		String result = "This Round Words Were: \n";
+		for(String s: this.words) {
+			result += "- " + s + " -"; 
+		}
+		return result;
+	}
+	public int getPlayersAmount() {
+		return this.players.size();
+	}
 }

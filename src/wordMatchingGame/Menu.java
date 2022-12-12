@@ -9,11 +9,11 @@ public class Menu extends GameState {
 	
 	@Override
 	public GameState run() {
-		System.out.println("Welcome! Choose an option: /n  [a]- Add Player /n  [b]- Quit");
+		System.out.println("Welcome! Choose an option: \n  [a]- Start New Game \n  [b]- Quit");
 		String input = Input.askInput();
 		switch(input) {
 		  case "a":
-		    return new AddPlayer(this.getMatch(), this);
+		    return new SetMatch(this.getMatch(), this);
 		  case "b":
 		    return new Quit(this.getMatch());
 		  default:

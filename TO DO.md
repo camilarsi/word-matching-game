@@ -1,2 +1,4 @@
--[ ] Show all the words at every end of round.
--[ ] Automate Player instantiation.
+-[x] Show all the words at every end of round.
+-[x] Automate Player instantiation.
+-[x] "Start new game" instead of "Add Player" in Menu. 
+-[x] Rename class "AddPlayer" to "SetMatch". 

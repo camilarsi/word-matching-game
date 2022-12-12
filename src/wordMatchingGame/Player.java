@@ -3,7 +3,7 @@ package wordMatchingGame;
 public class Player {
 
 	private String id;
-	private Match game;
+	private Match match;
 	private String word;
 	
 	public Player(String id) {   
@@ -11,16 +11,17 @@ public class Player {
 	}
 	
 	public void sayAWord() {
+		System.out.println("Player " + this.id + " say a word: ");
 		String word = Input.askInput();
 		if(this.word == null ||!this.word.equals(word)) {
 			this.word = word;
 		}
-		this.game.saveWord(word);
+		this.match.addWord(word);
 	}
 	
-	public void setGame(Match match) {
-		if(this.game == null) {
-			this.game = match;
+	public void setMatch(Match match) {
+		if(this.match == null) {
+			this.match = match;
 		}
 	}
 	

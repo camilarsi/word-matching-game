@@ -1,0 +1,2 @@
+-[ ] Show all the words at every end of round.
+-[ ] Automate Player instantiation.
